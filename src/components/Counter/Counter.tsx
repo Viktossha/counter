@@ -45,7 +45,7 @@ export const Counter = () => {
                     </div>
                 </div>
                 <div className='btns-wrapper'>
-                    <button onClick={onClickSettingsHandler}>set</button>
+                    <Button btnTitle={'set'} onClick={onClickSettingsHandler}/>
                 </div>
             </div>
 
@@ -54,8 +54,8 @@ export const Counter = () => {
                     {startValue}
                 </div>
                 <div className='btns-wrapper'>
-                    <button disabled={startValue === maxValue} onClick={increaseCounterHandler}>inc</button>
-                    <button disabled={startValue === 0} onClick={resetCounterHandler}>reset</button>
+                    <Button disabled={startValue === maxValue} btnTitle={'inc'} onClick={increaseCounterHandler}/>
+                    <Button disabled={startValue === 0} btnTitle={'reset'} onClick={resetCounterHandler}/>
                 </div>
             </div>
         </>
