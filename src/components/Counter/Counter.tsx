@@ -8,6 +8,7 @@ export const Counter = () => {
 
     let [startValue, setStartValue] = useState<number>(0)
     let [maxValue, setMaxValue] = useState<number>(5)
+    let [isDisabled, setDisabled] = useState<boolean>(true)
 
     const increaseCounterHandler = () => {
         let newValue = startValue + 1
@@ -54,8 +55,8 @@ export const Counter = () => {
                     {startValue}
                 </div>
                 <div className='btns-wrapper'>
-                    <Button disabled={startValue === maxValue} btnTitle={'inc'} onClick={increaseCounterHandler}/>
-                    <Button disabled={startValue === 0} btnTitle={'reset'} onClick={resetCounterHandler}/>
+                    <Button disabled={startValue === maxValue ? isDisabled : !isDisabled} btnTitle={'inc'} onClick={increaseCounterHandler}/>
+                    <Button disabled={startValue === 0 ? isDisabled : !isDisabled} btnTitle={'reset'} onClick={resetCounterHandler}/>
                 </div>
             </div>
         </>
