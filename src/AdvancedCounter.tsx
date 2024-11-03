@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import styles from './AdvancedCounter.module.css'
 
 export const AdvancedCounter = () => {
@@ -6,6 +6,16 @@ export const AdvancedCounter = () => {
     const [startValue, setStartValue] = useState(0)
     const [currentValue, setCurrentValue] = useState(startValue)
     const [isFocused, setIsFocused] = useState(false)
+
+    useEffect(() => {
+        let start = localStorage.getItem('startValue')
+        let max = localStorage.getItem('maxValue')
+        if (start && max) {
+            setStartValue(JSON.parse(start))
+            setMaxValue(JSON.parse(max))
+            setCurrentValue(JSON.parse(start))
+        }
+    }, []);
 
     const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setCurrentValue(0)
@@ -32,6 +42,8 @@ export const AdvancedCounter = () => {
     const setOnClickHandler = () => {
         setIsFocused(false)
         setCurrentValue(startValue)
+        localStorage.setItem('startValue', JSON.stringify(startValue))
+        localStorage.setItem('maxValue', JSON.stringify(maxValue))
     }
 
     const incorrectValue = maxValue < 0 || startValue < 0 || maxValue < startValue || maxValue === startValue
