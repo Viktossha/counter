@@ -1,5 +1,6 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import styles from './AdvancedCounter.module.css'
+import {Button} from "./Button";
 
 export const AdvancedCounter = () => {
     const [maxValue, setMaxValue] = useState(5)
@@ -62,7 +63,7 @@ export const AdvancedCounter = () => {
                     </label>
                 </div>
                 <div className={styles.btnBlock}>
-                    <button onClick={setOnClickHandler} disabled={!isFocused || incorrectValue}>set</button>
+                    <Button title={'set'} onClick={setOnClickHandler} disabled={!isFocused || incorrectValue}/>
                 </div>
             </div>
 
@@ -71,8 +72,8 @@ export const AdvancedCounter = () => {
                 <div
                     className={maxValue === currentValue ? styles.block + ' ' + styles.error : (isFocused ? styles.block + ' ' + styles.blockText : styles.block)}>{isFocused ? text : currentValue}</div>
                 <div className={styles.btnWrapper}>
-                    <button onClick={incOnClickHandler} disabled={maxValue === currentValue}>inc</button>
-                    <button onClick={resetOnClickHandler}>reset</button>
+                    <Button title={'inc'} onClick={incOnClickHandler} disabled={maxValue === currentValue}/>
+                    <Button title={'reset'} onClick={resetOnClickHandler}/>
                 </div>
             </div>
 
